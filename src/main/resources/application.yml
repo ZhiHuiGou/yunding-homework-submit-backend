@@ -22,6 +22,9 @@ spring:
         max-idle: 16
         max-active: 20
         min-idle: 8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
