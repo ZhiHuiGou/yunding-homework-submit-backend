@@ -1,14 +1,17 @@
-server: {port: 8086}
+server:
+  port: 8080
+
+##逻辑删除
 mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
-endpoint: oss-cn-beijing.aliyuncs.com
-access-key-id: LTAI5tCiDpoKRikvwEcJeKkD
-access-key-secret: KwHnYgd3hMoA8ZbvUGp0XStTqNq83I
-bucket-name: rhgdvjxosb
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 spring:
   redis:
     host: localhost
@@ -19,11 +22,28 @@ spring:
         max-idle: 16
         max-active: 20
         min-idle: 8
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yunjiaoyunji?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
-    url: 'jdbc:mysql://127.0.0.1:3306/yunjiaoyunji?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8'}
+  ##配置文件上传的大小
+  servlet:
+    multipart:
+      max-file-size: 10MB     #配置单个文件最大上传大小
+      max-request-size: 50MB #配置单个请求最大上传大小
+
 logging:
   level:
-    root: debug
+    root: info
+
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tCiDpoKRikvwEcJeKkD
+    access-key-secret: KwHnYgd3hMoA8ZbvUGp0XStTqNq83I
+    bucket-name: rhgdvjxosb
+
+

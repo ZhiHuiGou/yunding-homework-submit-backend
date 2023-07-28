@@ -1,9 +1,12 @@
 package com.yundingshuyuan.web.common.vo;
 
+import lombok.Data;
+
 /**
  * @Author cr
  * @Date 2023/7/22 11:06
  */
+@Data
 public class Result<T> {
 
     private Integer code;
